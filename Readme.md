@@ -7,3 +7,10 @@
 ### Решение
 1. в файле Program
 2. в файле Tree
+
+* Скрины
+
+![Tree-1](./src/main/resources/Tree-1.png)
+![Tree-2](./src/main/resources/Tree-2.png)
+![Tree-3](./src/main/resources/Tree-3.png)
+![Tree-4](./src/main/resources/Tree-4.png)

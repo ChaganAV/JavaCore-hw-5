@@ -1,3 +1,5 @@
+package ru.gb;
+
 import java.io.File;
 
 public class Tree {

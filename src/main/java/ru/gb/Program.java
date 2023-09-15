@@ -1,9 +1,13 @@
+package ru.gb;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 public class Program {
@@ -77,8 +81,25 @@ public class Program {
             if(file.isDirectory()){
                 backup(file.getName(),dirTo.getName());
             }else{
-                Files.copy(Path.of(file.getCanonicalPath()),Path.of(dirNameTo,file.getName()));
+                String fileNewName = createNewName(file.getName());
+                Files.copy(Path.of(file.getCanonicalPath()),Path.of(dirNameTo,fileNewName));
             }
         }
     }
+
+    /**
+     * Преобразование имени файла с учетом текущей даты и времени создания
+     * @param name имя файла
+     * @return новой имя файла
+     */
+    private static String createNewName(String name){
+        // 2023-09-15T09:32:14.619880500
+        // 2023-09-15T09-32-14
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String filename = "("+localDateTime.toString()
+                .substring(1,19)
+                .replace(":","-") + ")"+name;
+        return filename;
+    }
 }
+// javadoc -d docs -sourcepath ./src -cp ./target -subpackages ru.gb
