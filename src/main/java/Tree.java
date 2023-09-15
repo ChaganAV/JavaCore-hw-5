@@ -27,13 +27,16 @@ public class Tree {
             return;
 
         int subDirTotal = 0;
+        int filesTotal = 0;
         for (int i = 0; i < files.length; i++) {
             if(files[i].isDirectory())
                 subDirTotal++;
+            else{
+                filesTotal++;
+            }
         }
 
         int subDirCounter = 0;
-        int filesTotal = 0;
         int filesCounter = 0;
         File[] subFiles = null;
         for (int i = 0; i < files.length; i++) {
@@ -42,17 +45,6 @@ public class Tree {
                 filesTotal = 0;
                 filesCounter = 0;
                 printTree(files[i],indent,subDirCounter == subDirTotal);
-                subFiles = files[i].listFiles();
-                if(subFiles != null) {
-                    for (int j = 0; j < subFiles.length; j++) {
-                        filesTotal++;
-                    }
-
-//                    for (int j = 0; j < subFiles.length; j++) {
-//
-//                        printTree(files[i], indent, filesCounter == filesTotal);
-//                    }
-                }
             }else{
                 filesCounter++;
                 printTree(files[i], indent, filesCounter == filesTotal);
